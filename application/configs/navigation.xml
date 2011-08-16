@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configdata>
+	<resources>
+		<navigation>    
+			<pages>
+				<add>
+					<label>Add Page</label>
+					<controller>pages</controller>
+					<action>detail</action>
+				</add>
+				<list>
+					<label>Listing</label>
+					<controller>pages</controller>
+					<action>listing</action>
+				</list>
+				<signout>
+					<label>Sign Out</label>
+					<controller>account</controller>
+					<action>signout</action>
+				</signout>
+			</pages>
+		</navigation>
+	</resources>
+</configdata>

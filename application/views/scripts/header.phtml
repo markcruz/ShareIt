@@ -1,0 +1,23 @@
+<?php
+$this->headTitle("ShareIt");
+$this->headLink()->appendStylesheet("/css/style.css")
+	->headLink()->appendStylesheet("/css/forms.css")
+	->headLink()->appendStylesheet("/css/ie.css", "screen", "lte IE 8");
+
+echo $this->doctype();
+?>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php echo $this->headMeta()?>
+<?php echo $this->headTitle()?>
+<?php echo $this->headLink()?>
+</head>
+
+<body>
+
+<div>
+	<a id="header" href="/">
+		Acme Inc.
+	</a>
+</div>

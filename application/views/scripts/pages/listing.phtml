@@ -1,0 +1,40 @@
+<?php if (empty($this->entries)):?>
+<p>There are no pages yet.</p>
+<?php return?>
+<?php endif?>
+
+<table class="entries">
+<thead>
+	<tr>
+		<th>#</th>
+		<th>Actions</th>
+		<th>Filename</th>
+		<th>Description</th>
+		<th>Date</th>
+		<th>Last revision</th>
+		<th>Created By</th>
+	</tr>
+</thead>
+
+<tbody>
+<?php foreach ($this->entries as $id => $entry):?>
+	<tr<?php if ($id & 1):?> class="even"<?php endif?>>
+		<td><?php echo $entry->pageId?></td>
+		<td>
+			<a href="/pages/detail/id/<?php echo $entry->pageId?>">
+				<img src="/images/icon-edit.png" alt="Edit" />
+			</a>
+			<a href="/pages/delete/id/<?php echo $entry->pageId?>" onclick="return confirm('Are you sure?')">
+				<img src="/images/icon-delete.png" alt="Delete" />
+			</a>
+			<a href="/pages/notifications/id/<?php echo $entry->pageId?>">Notifications</a>
+		</td>
+		<td><?php echo $this->escape($entry->filename)?></td>
+		<td><?php echo $entry->pageDescription?></td>
+		<td><?php echo $entry->created?></td>
+		<td><?php echo $entry->last_revision?></td>
+		<td><?php echo $entry->email?></td>
+	</tr>
+<?php endforeach?>
+</tbody>
+</table>

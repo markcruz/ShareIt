@@ -1,0 +1,53 @@
+<h3>Description</h3>
+<p><?php echo nl2br($this->escape($this->pageDetail->description))?></p>
+
+<?php
+$this->form->setAction($this->url());
+echo $this->form;
+?>
+
+<?php if ($this->pageId):?>
+	<h3>Revisions</h3>
+	
+	<table class="entries">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Actions</th>
+				<th>Status</th>
+				<th>Filename</th>
+				<th>Date</th>
+				<th>Created By</th>
+				<th>Size</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($this->revisions as $entry):?>
+			<tr>
+				<td><?php echo $entry->revision?></td>
+				<td><a href="/pages/download/id/<?php echo $entry->id?>">Download</a></td>
+				<td><?php echo $this->escape($entry->fileStatus)?></td>
+				<td><?php echo $entry->filename?></td>
+				<td><?php echo new Zend_Date($entry->created)?></td>
+				<td><?php echo $entry->user?></td>
+				<td><?php echo $entry->size?></td>
+			</tr>
+			<?php endforeach?>
+		</tbody>
+	</table>
+	
+	<h3>Comments</h3>
+	<?php if (empty($this->comments)):?>
+	<p>There are no comments yet.</p>
+	<?php endif?>
+	
+	<?php $this->formAddComment->setAction($this->url())?>
+	<?php echo $this->formAddComment?>
+	
+	<?php foreach ($this->comments as $id => $entry):?>
+		<div>
+			<p>#<?php echo $id + 1?> <?php echo $this->escape($entry->user)?> <?php echo $this->escape(new Zend_Date($entry->created))?>
+			<p><?php echo nl2br($this->escape($entry->content))?></p>
+		</div>
+	<?php endforeach?>	
+<?php endif?>

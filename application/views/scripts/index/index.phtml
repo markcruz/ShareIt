@@ -1,0 +1,41 @@
+<?php
+$auth = ShareIt_Controller_Front::getAuthObject();
+?>
+<div id="welcome">
+	<h2>Welcome back, <?php echo $this->escape($auth->getIdentity()->email)?>!</h2>
+	<p>This system allows you to:</p>
+	<ul>
+		<li>Login</li>
+		<li>Upload initial files</li>
+		<li>List files</li>
+		<li>Upload new revisions</li>
+		<li>List all revisions</li>
+		<li>Download any revision</li>
+		<li>Add file comments</li>
+		<li>Read file comments</li>
+	</ul>
+	
+	<p>Security features</p>
+	<ul>
+		<li>CSRF protection</li>
+		<li>CAPTCHA</li>
+		<li>Proper escaping on the output (no XSS)</li>
+		<li>All files are stored in the database</li>
+		<li>No file inclusions</li>
+		<li>SHA1 algorithm for password hashing (no broken MD5)</li>
+	</ul>
+	
+	<p>Database features</p>
+	<ul>
+		<li>InnoDB Engine</li>
+		<li>Table relations (foreign keys)</li>
+		<li>Atomicity (transcations)</li>
+		<li>Consistency (all children are automatically deleted when removing parent)</li>
+	</ul>
+	
+	<p>Design</p>
+	<ul>
+		<li>Own simple graphics (the gradient, colors, layout, XHTML, CSS)</li>
+		<li>3rd-party Zend_Form styling with own customizations</li>
+	</ul>
+</div>

@@ -1,0 +1,25 @@
+<?php
+echo $this->partial("header.phtml");
+
+$auth = ShareIt_Controller_Front::getAuthObject();
+echo $auth->getStorage()->email;
+	
+echo $this->navigation()->menu();
+$label = "";
+$activePage = $this->navigation()->findOneBy("active", TRUE);
+if ($activePage)
+	$label = $activePage->get("label");
+?>
+<div class="cleaner"></div>
+
+<div id="page-content">
+	<?php if (!empty($this->heading)):?>
+		<h1><?php echo $this->escape($this->heading)?></h1>
+	<?php elseif ($label):?>
+		<h1><?php echo $this->escape($label)?></h1>
+	<?php endif?>
+	
+	<?php echo $this->layout()->content?>
+</div>
+
+<?php echo $this->partial("footer.phtml")?>
